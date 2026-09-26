@@ -184,6 +184,12 @@
     <system:String x:Key="HomeDashboardTitle">ダッシュボード</system:String>
     <system:String x:Key="AppearanceBehaviorSectionTitle">外観と動作</system:String>
     <system:String x:Key="UpdatesSectionTitle">更新</system:String>
+    <system:String x:Key="AutoUpdateTitle">GitHub リリースを自動インストール</system:String>
+    <system:String x:Key="AutoUpdateDescription">GitHub 版のみ。署名済み MSIX が公開されていない場合は手動で更新してください。</system:String>
+    <system:String x:Key="AutoUpdateIntervalTitle">更新の確認間隔</system:String>
+    <system:String x:Key="AutoUpdateDaily">毎日</system:String>
+    <system:String x:Key="AutoUpdateWeekly">毎週</system:String>
+    <system:String x:Key="AutoUpdateMonthly">30 日ごと</system:String>
     <system:String x:Key="SystemConfigure">構成</system:String>
     <system:String x:Key="AboutTitle">バージョン情報</system:String>
     <system:String x:Key="AboutContributorsTitle">❤️ 貢献者を紹介</system:String>

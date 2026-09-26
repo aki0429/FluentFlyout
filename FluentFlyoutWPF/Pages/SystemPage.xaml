@@ -178,6 +178,25 @@
 
             <!-- update section -->
             <TextBlock Text="{DynamicResource UpdatesSectionTitle}" FontSize="14" FontWeight="SemiBold" Margin="0,12,0,6" />
+            <ui:CardControl Tag="Indexable" Margin="0,0,0,3" Visibility="{Binding IsStoreVersion, Converter={StaticResource BoolToCollapsedVisibleConverter}}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource AutoUpdateTitle}" FontSize="14" />
+                        <TextBlock Text="{DynamicResource AutoUpdateDescription}" FontSize="12" Opacity="0.5" TextWrapping="Wrap" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <ui:ToggleSwitch IsChecked="{Binding AutoUpdateEnabled, Mode=TwoWay}" />
+            </ui:CardControl>
+            <ui:CardControl Tag="Indexable" Margin="0,0,0,3" Visibility="{Binding IsStoreVersion, Converter={StaticResource BoolToCollapsedVisibleConverter}}">
+                <ui:CardControl.Header>
+                    <TextBlock Text="{DynamicResource AutoUpdateIntervalTitle}" FontSize="14" />
+                </ui:CardControl.Header>
+                <ComboBox SelectedIndex="{Binding AutoUpdateInterval, Mode=TwoWay}" IsEnabled="{Binding AutoUpdateEnabled}" Style="{StaticResource DefaultComboBoxStyle}">
+                    <ComboBoxItem Content="{DynamicResource AutoUpdateDaily}" />
+                    <ComboBoxItem Content="{DynamicResource AutoUpdateWeekly}" />
+                    <ComboBoxItem Content="{DynamicResource AutoUpdateMonthly}" />
+                </ComboBox>
+            </ui:CardControl>
             <ui:CardControl x:Name="ShowUpdateNotificationsTitleCard" Tag="Indexable" Margin="0,0,0,36" >
                 <ui:CardControl.Header>
                     <TextBlock Text="{DynamicResource ShowUpdateNotificationsTitle}" FontSize="14" FontWeight="Regular" VerticalAlignment="Center" />

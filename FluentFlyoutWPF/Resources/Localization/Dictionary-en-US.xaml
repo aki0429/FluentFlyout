@@ -191,6 +191,12 @@ Note: As an open-source project, these features are also available for free via 
     <System:String x:Key="AppearanceBehaviorSectionTitle">Appearance &amp; behavior</System:String>
     <System:String x:Key="TrayIconSectionTitle">Tray Icon</System:String>
     <System:String x:Key="UpdatesSectionTitle">Updates</System:String>
+    <System:String x:Key="AutoUpdateTitle">Automatically install GitHub releases</System:String>
+    <System:String x:Key="AutoUpdateDescription">GitHub builds only. Requires a signed MSIX bundle in the release; otherwise install manually.</System:String>
+    <System:String x:Key="AutoUpdateIntervalTitle">Check for updates</System:String>
+    <System:String x:Key="AutoUpdateDaily">Daily</System:String>
+    <System:String x:Key="AutoUpdateWeekly">Weekly</System:String>
+    <System:String x:Key="AutoUpdateMonthly">Every 30 days</System:String>
     <System:String x:Key="SystemConfigure">Configure</System:String>
     <System:String x:Key="AppFilteringTitle">App Filtering</System:String>
     <System:String x:Key="AppFilteringRulesDescription">Control which applications can display media</System:String>

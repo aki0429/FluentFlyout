@@ -118,7 +118,7 @@ FluentFlyout is and always will be free and open-source. You can download the la
 Maintaining a project of this scale takes time and effort. To support ongoing development, the Microsoft Store version offers a convenient way to install the app and includes a few optional features unlockable via a small payment (€2.99, varies by region).
 
 - **Microsoft Store version:** provides automatic background updates and one-click installation. A small set of features is unlocked with a one-time purchase to help fund development.
-- **GitHub version:** Completely free, fully featured, and open-source. The only trade-off is that updates and installation must be done manually.
+- **GitHub version:** Completely free, fully featured, and open-source. In this fork, Settings → System → Updates offers optional automatic updates (daily, weekly, or every 30 days). It installs only signed MSIX bundles published in the upstream GitHub Releases; if a release has no MSIX bundle, download and install it manually. The Microsoft Store version continues to update through the Store. Automatic updates are off by default.
 
 Thank you for your support and understanding!
 

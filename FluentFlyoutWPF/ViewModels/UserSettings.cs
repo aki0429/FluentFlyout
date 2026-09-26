@@ -677,6 +677,17 @@ public partial class UserSettings : ObservableObject
     [ObservableProperty]
     public partial bool ShowUpdateNotifications { get; set; }
 
+    /// <summary>Automatically install newer GitHub Releases when a signed MSIX bundle is available.</summary>
+    [ObservableProperty]
+    public partial bool AutoUpdateEnabled { get; set; }
+
+    /// <summary>Check interval: 0 = daily, 1 = weekly, 2 = monthly.</summary>
+    [ObservableProperty]
+    public partial int AutoUpdateInterval { get; set; }
+
+    [ObservableProperty]
+    public partial long LastAutomaticUpdateCheckUnixSeconds { get; set; }
+
     /// <summary>
     /// Determines whether to use the legacy method for calculating taskbar width for widget positioning for compatibility with other taskbar mods
     /// </summary>
@@ -780,6 +791,8 @@ public partial class UserSettings : ObservableObject
         UseAlbumArtAsAccentColor = false;
         LastUpdateNotificationUnixSeconds = 0;
         ShowUpdateNotifications = true;
+        AutoUpdateEnabled = false;
+        AutoUpdateInterval = 0;
         LegacyTaskbarWidthEnabled = false;
         Uuid = Guid.NewGuid();
         AnonymousTelemetryAllowed = true;

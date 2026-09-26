@@ -77,6 +77,7 @@ public partial class MainWindow : MicaWindow
 
     private VolumeMixerWindow? volumeMixerWindow;
 
+    private readonly GitHubAutoUpdateService _autoUpdater = new();
     private readonly DispatcherTimer _displayRefreshTimer;
     private string _pendingDisplayRefreshReason = "Unknown";
     private bool _displayRefreshInProgress;
@@ -1488,6 +1489,7 @@ public partial class MainWindow : MicaWindow
 
     private void CleanupResources()
     {
+        _autoUpdater.Dispose();
         // try saving settings before exiting if window is still open
         // disabled because it caused too many issues (race conditions, shutdown exceptions), could look into another time
         //try
@@ -1909,6 +1911,10 @@ public partial class MainWindow : MicaWindow
             SettingsManager.SaveSettings();
 
             Logger.Info($"License synced on startup - Store: {SettingsManager.Current.IsStoreVersion}, Premium: {SettingsManager.Current.IsPremiumUnlocked}");
+#if GITHUB_RELEASE
+            if (!SettingsManager.Current.IsStoreVersion)
+                _autoUpdater.Start();
+#endif
         }
         catch (Exception ex)
         {
