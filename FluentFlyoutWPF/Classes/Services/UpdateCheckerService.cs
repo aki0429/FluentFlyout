@@ -1,7 +1,6 @@
 // Copyright (c) 2024-2026 The FluentFlyout Authors
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-using FluentFlyoutWPF.Classes.Clients;
 using NLog;
 using System.Net.Http;
 using System.Text.Json;
@@ -14,7 +13,14 @@ namespace FluentFlyoutWPF.Classes.Services;
 public static class UpdateCheckerService
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-    private const string ApiEndpoint = "newest-version";
+    private static readonly HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(15) };
+    private const string ApiEndpoint = "https://api.github.com/repos/unchihugo/FluentFlyout/releases/latest";
+
+    static UpdateCheckerService()
+    {
+        Client.DefaultRequestHeaders.UserAgent.ParseAdd("FluentFlyout-Updater");
+        Client.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github+json");
+    }
 
     /// <summary>
     /// Result of an update check
@@ -42,11 +48,11 @@ public static class UpdateCheckerService
 
         try
         {
-            var response = await FluentFlyoutApiClient.GetStringAsync(ApiEndpoint);
-            var json = JsonDocument.Parse(response);
+            var response = await Client.GetStringAsync(ApiEndpoint);
+            using var json = JsonDocument.Parse(response);
 
-            result.NewestVersion = json.RootElement.GetProperty("version").GetString() ?? string.Empty;
-            result.UpdateUrl = json.RootElement.GetProperty("url").GetString() ?? string.Empty;
+            result.NewestVersion = json.RootElement.GetProperty("tag_name").GetString() ?? string.Empty;
+            result.UpdateUrl = json.RootElement.GetProperty("html_url").GetString() ?? string.Empty;
             result.Success = true;
 
             // Compare versions
